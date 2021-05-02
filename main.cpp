@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include "geometry/Ray.hpp"
 
 using namespace std;
 
@@ -36,16 +37,16 @@ int main(int argc, char *argv[]) {
     double viewport_shift{1 - 1. / resolution};
 
     // The camera is located at (x=0;y=0;z=5).
-    double camera[3]{0, 0, 5};
+    Point camera{0, 0, 5};
 
     // And there is a sphere at (0;0;-5) with radius 1.
-    double sphere[3]{0, 0, -5};
+    Point sphere{0, 0, -5};
     int radius = 1;
 
     // To compute intersections, consider this article:
     // http://viclw17.github.io/2018/07/16/raytracing-ray-sphere-intersection/
     // delta_{x,y,z} is the vector A-C
-    double delta[3]{camera[0] - sphere[0],
+    Point delta{camera[0] - sphere[0],
                     camera[1] - sphere[1],
                     camera[2] - sphere[2]};
 
@@ -57,7 +58,7 @@ int main(int argc, char *argv[]) {
             double viewport_x_coordinate{x_pixel * viewport_scale_factor - viewport_shift};
 
             // Now we get the vector from the camera to the viewport.
-            double ray_direction[3]{viewport_x_coordinate - camera[0],
+            Point ray_direction{viewport_x_coordinate - camera[0],
                                     viewport_y_coordinate - camera[1],
                                     -camera[2]};
             // And we want to make sure to normalize the ray we want to trace to a length of 1, because this will
