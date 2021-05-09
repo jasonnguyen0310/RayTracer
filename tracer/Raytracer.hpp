@@ -17,6 +17,8 @@ class Raytracer
 {
     public:
         Raytracer();
+
+        // Creates vector for image 
         vector<vector<int>> to_raster(int resolution);
 };
 
