@@ -10,5 +10,7 @@ class PGMOut
 {
     public:
         PGMOut();
+
+        // Prints out the PGM picture to standard out
         void save(vector<vector<int>> image);
 };
