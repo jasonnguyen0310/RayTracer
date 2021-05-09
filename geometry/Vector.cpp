@@ -58,7 +58,7 @@ double Vector::len()
     return magnitude;
 }
 
-Vector Vector::unit_vector()
+Vector Vector::normalize()
 {
     Vector unit_vector;
     unit_vector.x = this->x / len();
