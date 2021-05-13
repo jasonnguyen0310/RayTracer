@@ -6,18 +6,22 @@ May 2, 2021
 
 #include <vector>
 #include "../geometry/Ray.hpp"
-#include "../scene/Sphere.hpp"
+#include "../scene/primitive/Sphere.hpp"
+#include "../scene/Camera/Camera.hpp"
+#include "../scene/Scene.hpp"
 
 #ifndef RAYTRACER_H
 #define RAYTRACER_H
 
 using namespace std;
 
+class Scene;
 class Raytracer
 {
+    private:
+        Scene scene;
     public:
-        Raytracer();
-
+        Raytracer(Scene s) : scene(s) {}
         // Creates vector for image 
         vector<vector<int>> to_raster(int resolution);
 };

@@ -7,6 +7,7 @@ May 3, 2021
 #ifndef VECTOR_H
 #define VECTOR_H
 #include "Point.hpp"
+
 struct Vector
 {
     double x;
@@ -19,10 +20,16 @@ struct Vector
     Vector get_vector(const Point& p1, const Point& p2);
     // adding vectors together
     Vector operator+(const Vector& v);
+    // division operator
+    Vector operator/(const Vector& v);
     // scaling vectors with a scalar
     Vector operator*(double scale);
+    // negation operator
+    Vector operator-();
     // dot product between two vectors
-    Vector dot_product(const Vector& v1, const Vector& v2);
+    double dot_product(const Vector& v1, const Vector& v2);
+    // cross product between two vectors
+    Vector cross_product(const Vector& v1, const Vector& v2);
     // magnitude of vector
     double len();
     // normalize vector

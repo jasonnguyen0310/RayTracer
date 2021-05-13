@@ -9,22 +9,22 @@ May 2, 2021
 #include <iostream>
 using namespace std;
 
-Sphere::Sphere()
+Sphere::Sphere() : Primitive()
 {
-    center = Point(0.0,0.0,0.0);
     radius = 0;
 }
 
-Vector Sphere::intersections(Ray r)
-{
 
+Intersection Sphere::intersections(Ray r)
+{
+    Intersection i;
     // To compute intersections, consider this article:
     // http://viclw17.github.io/2018/07/16/raytracing-ray-sphere-intersection/
     // delta_{x,y,z} is the vector A-C
+    Vector delta{r.start_point.x - origin.x,
+                    r.start_point.y - origin.y,
+                    r.start_point.z - origin.z};
 
-    Vector delta{r.start_point.x - center.x,
-                    r.start_point.y - center.y,
-                    r.start_point.z - center.z};
 
     // Now we can use the formula from the link to calculate b and c. Note that we can omit a, because
     // ray.dot(ray)=1. This is, because we normalized it.
@@ -38,21 +38,37 @@ Vector Sphere::intersections(Ray r)
                 delta.z * delta.z) -
                 radius * radius};
 
-    
     double discriminant{b * b - 4 * c};
-    Vector vector;
+    double distance;
+
     if (discriminant < 0)
     {
-        vector.x = 11.0;
-        vector.y = 11.0;
+        distance = 0.0;
+        Point point_of_intersection = r.start_point + r.direction_vector * distance;
+        i.intersected_primitive = this;
+        i.distance = distance;
+        i.point_of_intersection = point_of_intersection;
     }
     else
     {
         double distance1 = (-b + sqrt(discriminant)) / 2;
         double distance2 = (-b - sqrt(discriminant)) / 2;
-        vector.x = distance1;
-        vector.y = distance2;
+        if (distance1 > distance2)
+        {
+            distance = distance2;
+        }
+        else
+        {
+            distance = distance1;
+        }
+        
+        Point point_of_intersection = r.start_point + r.direction_vector * distance;
+        i.intersected_primitive = this;
+        i.distance = distance;
+        i.point_of_intersection = point_of_intersection;
     }
-    return vector;
+
+    return i;
 
 }
+

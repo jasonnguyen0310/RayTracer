@@ -42,12 +42,39 @@ Vector Vector::operator*(double scale)
     return vector;
 }
 
-Vector Vector::dot_product(const Vector& v1, const Vector& v2)
+Vector Vector::operator-()
 {
     Vector vector;
-    vector.x = v1.x * v2.x;
-    vector.y = v1.y * v2.y;
-    vector.z = v1.z * v2.z;
+    vector.x = -this->x;
+    vector.y = -this->y;
+    vector.z = -this->z;
+    return vector;
+}
+
+Vector Vector::operator/(const Vector& v)
+{
+    Vector vector;
+    vector.x = this->x / v.x;
+    vector.y = this->y / v.y;
+    vector.z = this->z / v.z;
+    return vector;
+}
+
+double Vector::dot_product(const Vector& v1, const Vector& v2)
+{
+    double product = 0;
+    product += v1.x * v2.x;
+    product += v1.y * v2.y;
+    product += v1.z * v2.z;
+    return product;
+}
+
+Vector Vector::cross_product(const Vector& v1, const Vector& v2)
+{
+    Vector vector;
+    vector.x = (v1.y * v2.z) - (v1.z * v2.y);
+    vector.y = (v1.z * v2.x) - (v1.x * v2.z);
+    vector.z = (v1.x * v2.y) - (v1.y * v2.x);
     return vector;
 }
 

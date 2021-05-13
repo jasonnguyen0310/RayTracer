@@ -1,5 +1,5 @@
-output: Point.o Vector.o Ray.o Sphere.o PGMOut.o Raytracer.o main.o 
-	g++ -std=c++17 Point.o Vector.o Ray.o Sphere.o PGMOut.o Raytracer.o main.o -o a.out
+output: Point.o Vector.o Ray.o Primitive.o Intersection.o Sphere.o Plane.o Scene.o Camera.o PGMOut.o Raytracer.o main.o 
+	g++ -std=c++17 Point.o Vector.o Ray.o Primitive.o Intersection.o Sphere.o Plane.o Scene.o Camera.o PGMOut.o Raytracer.o main.o -o a.out
 
 main.o: main.cpp
 	g++ -std=c++17 -c main.cpp
@@ -12,9 +12,24 @@ Vector.o: geometry/Vector.cpp
 
 Ray.o: geometry/Ray.cpp
 	g++ -std=c++17 -c geometry/Ray.cpp geometry/Ray.hpp
-	
-Sphere.o: scene/Sphere.cpp
-	g++ -std=c++17 -c scene/Sphere.cpp scene/Sphere.hpp
+
+Primitive.o: scene/primitive/Primitive.cpp
+	g++ -std=c++17 -c scene/primitive/Primitive.cpp scene/primitive/Primitive.hpp
+
+Intersection.o: scene/primitive/Intersection.cpp
+	g++ -std=c++17 -c scene/primitive/Intersection.cpp scene/primitive/Intersection.hpp
+
+Sphere.o: scene/primitive/Sphere.cpp
+	g++ -std=c++17 -c scene/primitive/Sphere.cpp scene/primitive/Sphere.hpp
+
+Plane.o: scene/primitive/Plane.cpp
+	g++ -std=c++17 -c scene/primitive/Plane.cpp scene/primitive/Plane.hpp
+
+Scene.o: scene/Scene.cpp
+	g++ -std=c++17 -c scene/Scene.cpp scene/Scene.hpp
+
+Camera.o: scene/Camera/Camera.cpp
+	g++ -std=c++17 -c scene/Camera/Camera.cpp scene/Camera/Camera.hpp
 
 PGMOut.o: image/PGMOut.cpp
 	g++ -std=c++17 -c image/PGMOut.cpp image/PGMOut.hpp

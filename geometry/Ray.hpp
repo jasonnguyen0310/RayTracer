@@ -13,7 +13,9 @@ May 3, 2021
 class Ray 
 {
     public:
+        // starting point of ray
         Point start_point;
+        // direction vector of ray
         Vector direction_vector;
         Ray(Point p, Vector v) : start_point(p), direction_vector(v) {}
 };
