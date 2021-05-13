@@ -39,6 +39,7 @@ vector<vector<int>> Raytracer::to_raster(int resolution)
             {
                 brightness = 0;
             }
+            
             image[y_pixel].push_back(brightness);
             
         }

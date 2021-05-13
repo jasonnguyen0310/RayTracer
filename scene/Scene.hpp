@@ -26,6 +26,7 @@ class Scene
         std::vector<Primitive*> primitives;
         Scene() {}
         Scene(const std::string& filepath);
+        ~Scene();
         std::optional<Intersection> find_intersection(Ray r);
 };
 
