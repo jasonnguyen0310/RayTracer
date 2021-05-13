@@ -164,7 +164,7 @@ Scene::Scene(const std::string& filepath)
 
 Scene::~Scene()
 {
-    for (int i = 0; i < primitives.size() - 1; i++)
+    for (int i = 0; i < primitives.size(); i++)
     {
         delete primitives[i];
     }
