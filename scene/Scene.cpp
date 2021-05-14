@@ -161,6 +161,7 @@ Scene::Scene(const std::string& filepath)
 
 }
 
+/*
 Scene::~Scene()
 {
     for (int i = 0; i < primitives.size(); i++)
@@ -168,7 +169,7 @@ Scene::~Scene()
         delete primitives[i];
     }
 }
-
+*/
 
 std::optional<Intersection> Scene::find_intersection(Ray r)
 {
