@@ -17,15 +17,15 @@ May 3, 2021
 #include <sstream>
 #include <optional>
 #include <vector>
+#include <memory>
 
 
 class Scene
 {
     public:
         Camera camera;
-        std::vector<Primitive*> primitives;
+        std::vector<std::unique_ptr<Primitive>> primitives;
         Scene() {}
-        //~Scene();
         Scene(const std::string& filepath);
         std::optional<Intersection> find_intersection(Ray r);
 };

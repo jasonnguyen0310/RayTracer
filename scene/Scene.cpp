@@ -106,8 +106,8 @@ Scene::Scene(const std::string& filepath)
                     params.push_back(std::stod(param));
                 }
             }
-            Sphere* s = new Sphere(Point(params[0],params[1],params[2]), params[3]);
-            primitives.push_back(s);
+            unique_ptr<Sphere> s = make_unique<Sphere>(Point(params[0],params[1],params[2]), params[3]);
+            primitives.emplace_back(s);
             params.clear();
         }
         else if (param == "plane")
@@ -154,22 +154,12 @@ Scene::Scene(const std::string& filepath)
                     params.push_back(std::stod(param));
                 }
             }
-            Plane *p = new Plane(Point(params[0],params[1],params[2]), Vector(params[3],params[4],params[5]));
-            primitives.push_back(p);
+            unique_ptr<Plane> p = make_unique<Plane>(Point(params[0],params[1],params[2]), Vector(params[3],params[4],params[5]));
+            primitives.emplace_back(p);
         }
     }
 
 }
-
-/*
-Scene::~Scene()
-{
-    for (int i = 0; i < primitives.size(); i++)
-    {
-        delete primitives[i];
-    }
-}
-*/
 
 std::optional<Intersection> Scene::find_intersection(Ray r)
 {
