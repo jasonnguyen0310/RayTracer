@@ -20,6 +20,7 @@ class Camera
         Vector up_vector;
         Vector right_vector;
         Camera() {}
+        Camera& operator =(const Camera &rhs);
         Camera(Point pos, Point viewport_center, double height, double width);
         Ray calculate_rays(double viewport_x_coordinate, double viewport_y_coordinate);
 };

@@ -10,7 +10,7 @@ using namespace std;
 int main(int, char *argv[]) {
     Scene scene{argv[1]};
     int resolution = static_cast<int>(strtol(argv[2], nullptr, 10));
-    Raytracer raytracer{scene};
+    Raytracer raytracer{move(scene)};
     PGMOut().save(raytracer.to_raster(resolution));
     return 0;
 }

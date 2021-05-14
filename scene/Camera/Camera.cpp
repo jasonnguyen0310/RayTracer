@@ -7,6 +7,7 @@ May 3, 2021
 #include "Camera.hpp"
 #include <iostream>
 using namespace std;
+
 Camera::Camera(Point pos, Point viewport_center, double viewport_height, double viewport_width)
 {
     camera_position = pos;

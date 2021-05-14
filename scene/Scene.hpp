@@ -25,8 +25,8 @@ class Scene
         Camera camera;
         std::vector<Primitive*> primitives;
         Scene() {}
-        Scene(const std::string& filepath);
         ~Scene();
+        Scene(const std::string& filepath);
         std::optional<Intersection> find_intersection(Ray r);
 };
 

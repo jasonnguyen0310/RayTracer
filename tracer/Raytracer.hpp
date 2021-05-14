@@ -21,7 +21,7 @@ class Raytracer
     private:
         Scene scene;
     public:
-        Raytracer(Scene &s) : scene(s) {}
+        Raytracer(Scene s) : scene(move(s)) {}
         // Creates vector for image 
         vector<vector<int>> to_raster(int resolution);
 };
